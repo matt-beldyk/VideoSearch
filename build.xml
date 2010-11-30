@@ -1,0 +1,40 @@
+<!DOCTYPE project>
+
+<project name="VideoSearch" default="jar" basedir=".">
+
+	<property file="build.properties"/>
+	<property name="build" value="build"/>
+	<property name="src" value="src"/>
+	<property name="build.classes" value="build/classes" />
+	<property name="dist.dir" value="dist" />
+
+    <path id="vid.classpath">
+        <fileset dir="lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+	<target name="prepare" >
+		<mkdir dir="${build.classes}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="clean" >
+		<delete dir="${build}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="compile" depends="prepare">
+
+        <javac srcdir="${src}"  destdir="${build.classes}" deprecation="true" failonerror="true" debug="true">
+            <classpath refid="vid.classpath"/>
+        </javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${dist.dir}/${dist.jar}">
+			<fileset dir="${build.classes}" />
+		</jar>
+	</target>
+
+</project>
