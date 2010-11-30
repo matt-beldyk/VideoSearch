@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.videoSearch.media.AbstractMediaItem;
+
 public class FileSystemSpider implements AbstractSpider {
 
 	private String fsRoot;
 	private Set<String> allMediaFiles;
-	
 	
 	public FileSystemSpider(String rootPath){
 		fsRoot = rootPath;
