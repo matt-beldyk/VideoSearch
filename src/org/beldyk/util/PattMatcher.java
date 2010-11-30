@@ -1,4 +1,4 @@
-package org.beldyk.video.harvester;
+package org.beldyk.util;
 
 import java.util.HashMap;
 import java.util.Map;

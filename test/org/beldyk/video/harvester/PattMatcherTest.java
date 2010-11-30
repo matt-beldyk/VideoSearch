@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.beldyk.util.PattMatcher;
 import org.junit.Test;
 
 public class PattMatcherTest {

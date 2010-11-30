@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
+import org.beldyk.util.FileNameParser;
 import org.junit.Test;
 
 public class FileNameParserTest {

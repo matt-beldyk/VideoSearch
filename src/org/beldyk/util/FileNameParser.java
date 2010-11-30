@@ -1,4 +1,4 @@
-package org.beldyk.video.harvester;
+package org.beldyk.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class FileNameParser {
 	private Collection<PattMatcher> pattMatch;
