@@ -1,0 +1,8 @@
+# Doctor Who S01E05.avi
+# Doctor Who - S01E05.avi
+(\w[\w\s]*\w)[\s-]+S(\d+)E(\d+).(\w+)##series##season##ep##format
+
+# Doctor Who - 105.avi
+# Doctor Who 105.avi
+(\w[\w\s]*\w)[\s-]+(\d+)(\d\d).(\w+)##series##season##ep##format
+
