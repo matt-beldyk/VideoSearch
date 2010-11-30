@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.beldyk.util.FileNameParser;
 
-abstract public class AbstractMediaItem {
+abstract public class AbstractMediaItem{
 	protected String fileUrl;
 	protected String format;
 	

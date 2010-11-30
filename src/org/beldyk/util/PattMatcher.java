@@ -37,7 +37,7 @@ public class PattMatcher {
 			 */
 			Map<String, String> pTags = new HashMap<String, String>();
 			for(String tag: tags.keySet()){
-				System.err.println(tag+":"+tags.get(tag));
+			//	System.err.println(tag+":"+tags.get(tag));
 				pTags.put(tag, mat.group(tags.get(tag)));
 			}
 
