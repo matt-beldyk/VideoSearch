@@ -5,6 +5,9 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import com.videoSearch.media.AbstractMediaItem;
+import com.videoSearch.media.VideoItem;
+
 public class IndexerTest {
 
 	@Test
@@ -17,6 +20,12 @@ public class IndexerTest {
 			System.out.println(fname);
 		}
 		dex.parseFiles();
+		
+		for(AbstractMediaItem item:dex.getMediaItems()){
+			if(VideoItem.class.equals(item.getClass())){
+				System.out.println(((VideoItem)item).getSeriesName());
+			}
+		}
 		
 	}
 }

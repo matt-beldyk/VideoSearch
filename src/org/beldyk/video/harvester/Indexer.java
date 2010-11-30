@@ -39,6 +39,8 @@ public class Indexer {
 			try{
 				AbstractMediaItem item = MediaItemFactory.getHarvesterInstance(url,this.fnameParser);
 				if(item != null){
+					item.init();
+
 					this.parsedMediaFiles.add(item);
 				}else{
 					//System.err.printf("Ignoring file: '%s'\n",url);
@@ -71,4 +73,7 @@ public class Indexer {
 	}
 
 
+	public Set<AbstractMediaItem> getMediaItems(){
+		return this.parsedMediaFiles;
+	}
 }

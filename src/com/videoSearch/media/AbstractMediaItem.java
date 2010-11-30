@@ -21,7 +21,10 @@ abstract public class AbstractMediaItem{
 		this.fileUrl = fileUrl;
 		this.nameParser = np;
 		
+	}
+	public void init(){
 		this.tokenizedFname = nameParser.parseFileName(fileUrl);
+
 	}
 	public String getFileUrl() {
 		return fileUrl;

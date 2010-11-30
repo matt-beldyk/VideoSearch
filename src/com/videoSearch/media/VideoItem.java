@@ -5,13 +5,27 @@ import org.beldyk.util.FileNameParser;
 public class VideoItem extends AbstractMediaItem {
 
 	protected String seriesName;
+	protected String title;
 	protected Integer seasonNum;
 	protected Integer episodeNum;
-	
+
 	public VideoItem(String fileUrl, FileNameParser nameParser) {
 		super(fileUrl, nameParser);
+
 	}
 
+	@Override
+	public void init(){
+		super.init();
+		if(this.tokenizedFname != null){
+			if(this.tokenizedFname.containsKey("series")){
+				this.seriesName = this.tokenizedFname.get("series");
+			}
+			this.title = this.tokenizedFname.get("title");
+			this.episodeNum = new Integer(this.tokenizedFname.get("ep"));
+			this.seasonNum = new Integer(this.tokenizedFname.get("season"));
+		}
+	}
 	public String getSeriesName() {
 		return seriesName;
 	}
@@ -36,6 +50,6 @@ public class VideoItem extends AbstractMediaItem {
 		this.episodeNum = episodeNum;
 	}
 
-	
-	
+
+
 }
