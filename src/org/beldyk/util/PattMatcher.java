@@ -13,7 +13,7 @@ public class PattMatcher {
 	public PattMatcher(String pattern, String [] tgs){
 		tags = new HashMap<String, Integer>();
 
-		patt = Pattern.compile(pattern);
+		patt = Pattern.compile(pattern+"$");
 		for(Integer i = 0; i<tgs.length; i++){
 			tags.put(tgs[i], i+1);
 		}
@@ -21,7 +21,7 @@ public class PattMatcher {
 	public PattMatcher(String[] tgs) {
 		tags = new HashMap<String, Integer>();
 
-		patt = Pattern.compile(tgs[0]);
+		patt = Pattern.compile(tgs[0]+"$");
 		for(Integer i = 1; i<tgs.length; i++){
 			tags.put(tgs[i], i);
 		}
