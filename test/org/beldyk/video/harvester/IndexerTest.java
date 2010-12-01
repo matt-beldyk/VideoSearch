@@ -3,6 +3,8 @@ package org.beldyk.video.harvester;
 import java.io.FileNotFoundException;
 import java.util.Set;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.videoSearch.media.AbstractMediaItem;
@@ -10,10 +12,30 @@ import com.videoSearch.media.VideoItem;
 
 public class IndexerTest {
 
+	private Indexer dex;
+	
+	@Before
+	public void setup() throws Exception{
+		dex = new Indexer("videoPatterns.txt", "/home/beldyk/homework_data/VideoSearch/television/");
+		dex.spiderFS();
+	}
+	
+	@After
+	public void tearDown(){
+		dex = null;
+	}
+	
+	@Test 
+	public void testPullFromTVDB() throws Exception{
+		dex.parseFiles();
+		dex.pullInSeries();
+		
+	}
+	
+	
 	@Test
 	public void indexVideoTV() throws Exception{
-		Indexer dex = new Indexer("videoPatterns.txt", "/home/beldyk/homework_data/VideoSearch/television/");
-		dex.spiderFS();
+		
 		Set<String> fnames = dex.getFileNames();
 
 		for (String fname:fnames){
