@@ -2,3 +2,4 @@ org.apache.http.* comes from http://hc.apache.org/downloads.cgi
 tvdbapi from : svn checkout http://javatvdbapi.googlecode.com/svn/thetvdbapi/ javatvdbapi-read-only 
 
 
+test
