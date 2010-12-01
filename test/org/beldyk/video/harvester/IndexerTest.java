@@ -12,7 +12,7 @@ public class IndexerTest {
 
 	@Test
 	public void indexVideoTV() throws Exception{
-		Indexer dex = new Indexer("videoPatterns.txt", "/home/beldyk/union/media/video/Television/");
+		Indexer dex = new Indexer("videoPatterns.txt", "/home/beldyk/homework_data/VideoSearch/television/");
 		dex.spiderFS();
 		Set<String> fnames = dex.getFileNames();
 

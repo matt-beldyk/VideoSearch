@@ -22,8 +22,12 @@ public class VideoItem extends AbstractMediaItem {
 				this.seriesName = this.tokenizedFname.get("series");
 			}
 			this.title = this.tokenizedFname.get("title");
-			this.episodeNum = new Integer(this.tokenizedFname.get("ep"));
-			this.seasonNum = new Integer(this.tokenizedFname.get("season"));
+			if(this.tokenizedFname.get("ep") != null){
+				this.episodeNum = new Integer(this.tokenizedFname.get("ep"));
+			}
+			if(this.tokenizedFname.get("season") != null){
+				this.seasonNum = new Integer(this.tokenizedFname.get("season"));
+			}
 		}
 	}
 	public String getSeriesName() {
