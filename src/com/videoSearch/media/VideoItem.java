@@ -19,12 +19,16 @@ public class VideoItem extends AbstractMediaItem {
 		super.init();
 		if(this.tokenizedFname != null){
 			if(this.tokenizedFname.containsKey("series")){
-				this.seriesName = this.tokenizedFname.get("series");
+				this.seriesName = this.tokenizedFname.
+							get("series").
+							replaceAll("[\\s\\.\\_\\-]+", " ").toLowerCase();
 			}
 			this.title = this.tokenizedFname.get("title");
+			
 			if(this.tokenizedFname.get("ep") != null){
 				this.episodeNum = new Integer(this.tokenizedFname.get("ep"));
 			}
+			
 			if(this.tokenizedFname.get("season") != null){
 				this.seasonNum = new Integer(this.tokenizedFname.get("season"));
 			}
