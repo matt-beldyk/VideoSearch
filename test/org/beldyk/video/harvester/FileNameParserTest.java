@@ -25,8 +25,8 @@ public class FileNameParserTest {
 			System.out.println("Parseing "+n);
 			Map<String, String> tags = ps.parseFileName(n);
 			assertEquals("Doctor Who", tags.get("series"));
-			assertEquals(1, new Integer(tags.get("season")));
-			assertEquals(5, new Integer(tags.get("ep")));
+			assertEquals(new Integer(1), new Integer(tags.get("season")));
+			assertEquals(new Integer(5), new Integer(tags.get("ep")));
 			assertEquals("avi", tags.get("format"));
 		}
 	}
