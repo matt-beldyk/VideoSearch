@@ -31,6 +31,18 @@ public class Indexer {
 
 	private String videoPattConf;
 	private String mediaRoot;
+	
+	
+	/**
+	 * this is gonna be our main entry point
+	 * into the indexer System
+	 */
+	public void indexEm(){
+		spiderFS();
+		parseFiles();
+		pullInSeries();
+		mapFiles2Series();
+	}
 
 	public Indexer(String vPat, String mediaRoot) throws FileNotFoundException{
 		this.videoPattConf = vPat;
@@ -49,7 +61,7 @@ public class Indexer {
 		fileNames = spider.getUrls();
 	}
 
-	public void parseFiles() throws Exception{
+	public void parseFiles(){
 		for(String url: fileNames){
 			try{
 				AbstractMediaItem item = MediaItemFactory.getHarvesterInstance(url,this.fnameParser);
@@ -90,6 +102,15 @@ public class Indexer {
 				System.err.printf("Just pulled in '%s' but really '%s'\n", s, ids.get(0).getSeriesName());
 			}else{
 				System.err.printf("Could not find a results for '%s'\n", s);
+			}
+		}
+	}
+	
+	public void mapFiles2Series(){
+		for(AbstractMediaItem item : this.parsedMediaFiles){
+			if(VideoItem.class.equals(item.getClass())){
+				VideoItem vItem = (VideoItem)item;
+				vItem.setTvdbSeries(this.serii.get(vItem.getSeriesName()));
 			}
 		}
 	}

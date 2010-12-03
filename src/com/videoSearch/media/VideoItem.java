@@ -2,12 +2,23 @@ package com.videoSearch.media;
 
 import org.beldyk.util.FileNameParser;
 
+import com.moviejukebox.thetvdb.model.Series;
+
 public class VideoItem extends AbstractMediaItem {
 
 	protected String seriesName;
 	protected String title;
 	protected Integer seasonNum;
 	protected Integer episodeNum;
+	protected Series tvdbSeries;
+
+	public Series getTvdbSeries() {
+		return tvdbSeries;
+	}
+
+	public void setTvdbSeries(Series tvdbSeries) {
+		this.tvdbSeries = tvdbSeries;
+	}
 
 	public VideoItem(String fileUrl, FileNameParser nameParser) {
 		super(fileUrl, nameParser);

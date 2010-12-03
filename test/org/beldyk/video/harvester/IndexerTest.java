@@ -29,6 +29,8 @@ public class IndexerTest {
 	public void testPullFromTVDB() throws Exception{
 		dex.parseFiles();
 		dex.pullInSeries();
+		dex.mapFiles2Series();
+
 		
 	}
 	
@@ -42,7 +44,7 @@ public class IndexerTest {
 			System.out.println(fname);
 		}
 		dex.parseFiles();
-
+		
 		for(AbstractMediaItem item:dex.getMediaItems()){
 			if(VideoItem.class.equals(item.getClass())){
 				if( ((VideoItem)item).getSeriesName() != null){
