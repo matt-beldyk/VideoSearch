@@ -21,6 +21,13 @@ public class LuIndexer {
 	protected Directory iDir;
 	protected Indexer vIndexer;
 	
+	public LuIndexer(IndexWriter iWriter, Directory iDir, Indexer vIndexer){
+		this.iWriter = iWriter;
+		this.iDir = iDir;
+		this.vIndexer = vIndexer;
+		
+	}
+	
 	
 	public void init() throws CorruptIndexException, LockObtainFailedException, IOException{
 		iWriter = new IndexWriter( iDir, 
