@@ -40,6 +40,7 @@ abstract public class AbstractMediaItem{
 		doc.add(new Field( "fileUrl", this.fileUrl, 
 				Field.Store.YES, Field.Index.ANALYZED));
 
+		//TODO throw some boosts into here
 
 		return doc;
 	}
