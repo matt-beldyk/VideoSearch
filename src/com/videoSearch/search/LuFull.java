@@ -40,6 +40,7 @@ public class LuFull {
 
 	public void init() throws CorruptIndexException, IOException{
 		luIndexer.fullIndex();
+		
 	}
 
 	public Collection<String> search(String query) throws IOException, ParseException{

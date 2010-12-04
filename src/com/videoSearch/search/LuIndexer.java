@@ -35,6 +35,7 @@ public class LuIndexer {
 		vIndexer.pullInSeries();
 		vIndexer.mapFiles2Series();
 		Integer countDocs = luceneIndex();
+		iWriter.close();
 		return countDocs;
 	}
 	
@@ -45,7 +46,7 @@ public class LuIndexer {
 	public Integer luceneIndex() throws CorruptIndexException, IOException {
 		for(AbstractMediaItem item: vIndexer.getMediaItems()){
 			Document doc = item.toDocument();
-	
+			System.out.println("Indexing "+item.getFileUrl());
 			
 			if(doc != null){
 				iWriter.addDocument(doc);

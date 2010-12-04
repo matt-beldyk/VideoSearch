@@ -76,13 +76,13 @@ public class VideoItem extends AbstractMediaItem {
 		Document doc = super.toDocument();
 
 		if(this.seriesName != null){
-			System.err.printf("adding name '%s' for '%s'", seriesName, fileUrl);
+			// System.err.printf("adding name '%s' for '%s'", seriesName, fileUrl);
 			doc.add(new Field( "seriesName", this.seriesName, 
 					Field.Store.YES, Field.Index.ANALYZED));
 		}
 
 		if(this.tvdbSeries != null && this.tvdbSeries.getOverview() != null){
-			System.err.println("ading a desc for " +this.fileUrl);
+			// System.err.println("ading a desc for " +this.fileUrl);
 			doc.add(new Field( "seriesDesc", this.tvdbSeries.getOverview(), 
 					Field.Store.YES, Field.Index.ANALYZED));
 		}
