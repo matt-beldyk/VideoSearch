@@ -1,5 +1,7 @@
 package com.videoSearch.media;
 
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
 import org.beldyk.util.FileNameParser;
 
 import com.moviejukebox.thetvdb.model.Series;
@@ -31,15 +33,15 @@ public class VideoItem extends AbstractMediaItem {
 		if(this.tokenizedFname != null){
 			if(this.tokenizedFname.containsKey("series")){
 				this.seriesName = this.tokenizedFname.
-							get("series").
-							replaceAll("[\\s\\.\\_\\-]+", " ").toLowerCase();
+				get("series").
+				replaceAll("[\\s\\.\\_\\-]+", " ").toLowerCase();
 			}
 			this.title = this.tokenizedFname.get("title");
-			
+
 			if(this.tokenizedFname.get("ep") != null){
 				this.episodeNum = new Integer(this.tokenizedFname.get("ep"));
 			}
-			
+
 			if(this.tokenizedFname.get("season") != null){
 				this.seasonNum = new Integer(this.tokenizedFname.get("season"));
 			}
@@ -68,6 +70,23 @@ public class VideoItem extends AbstractMediaItem {
 	public void setEpisodeNum(Integer episodeNum) {
 		this.episodeNum = episodeNum;
 	}
+
+	@Override
+	public Document toDocument(){
+		Document doc = super.toDocument();
+
+		doc.add(new Field( "seriesName", this.seriesName, 
+				Field.Store.YES, Field.Index.ANALYZED));
+
+		
+		doc.add(new Field( "seriesDesc", this.tvdbSeries.getOverview(), 
+				Field.Store.YES, Field.Index.ANALYZED));
+		
+		//TODO add more fields from tvdb foo
+
+		return doc;
+	}
+
 
 
 

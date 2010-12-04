@@ -43,11 +43,8 @@ public class LuIndexer {
 	
 	public Integer index() throws CorruptIndexException, IOException {
 		for(AbstractMediaItem item: vIndexer.getMediaItems()){
-			Document doc = null;
-			if(VideoItem.class.equals(item.getClass())){ // is a vid item
-				VideoItem vItem = (VideoItem)item;
-				doc = getDocument(vItem);
-			}
+			Document doc = item.toDocument();
+	
 			
 			if(doc != null){
 				iWriter.addDocument(doc);
@@ -80,25 +77,5 @@ public class LuIndexer {
 		vIndexer = indexer;
 	}
 
-	/**
-	 * changes a VideoItem into an indexable document
-	 * 
-	 * @param vItem
-	 * @return
-	 */
-	protected Document getDocument(VideoItem vItem){
-		Document doc = new Document();
-		doc.add(new Field( "seriesName", vItem.getSeriesName(), 
-							Field.Store.YES, Field.Index.ANALYZED));
-		
-		doc.add(new Field( "fileUrl", vItem.getFileUrl(), 
-				Field.Store.YES, Field.Index.ANALYZED));
-		
-		doc.add(new Field( "seriesDesc", vItem.getTvdbSeries().getOverview(), 
-				Field.Store.YES, Field.Index.ANALYZED));
-		
-		//TODO add more fields from tvdb foo
-		
-		return doc;
-	}
+
 }
