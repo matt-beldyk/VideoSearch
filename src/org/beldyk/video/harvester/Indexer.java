@@ -110,7 +110,11 @@ public class Indexer {
 		for(AbstractMediaItem item : this.parsedMediaFiles){
 			if(VideoItem.class.equals(item.getClass())){
 				VideoItem vItem = (VideoItem)item;
-				vItem.setTvdbSeries(this.serii.get(vItem.getSeriesName()));
+				Series ser = this.serii.get(vItem.getSeriesName());
+				if(ser != null){
+					System.err.printf("adding '%s' to %s'", ser.getSeriesName(), vItem.getFileUrl());
+				}
+				vItem.setTvdbSeries(ser);
 			}
 		}
 	}
