@@ -13,13 +13,14 @@ public class PattMatcherTest {
 
 	@Test
 	public void setupOfPattMatcherExamples(){
-		String [] tgs = { "series", "ep"};
+		String [] tgs = { "series", "ep","format"};
 		//PattMatcher pat = new PattMatcher("(\\w+)\\s+(S\\d+E\\d+)", tgs );
-		PattMatcher pat = new PattMatcher("(\\w+)\\s+(S\\d+E\\d+)", tgs );
+		PattMatcher pat = new PattMatcher("(\\w+)\\s+(S\\d+E\\d+).+\\.(\\w{3})", tgs );
 
 		Map<String, String> tags = pat.parseString("foo S42E57 bar.avi");
 		assertEquals("foo", tags.get("series"));
 		assertEquals("S42E57", tags.get("ep"));
+		assertEquals("avi", tags.get("format"));
 		}
 	
 	@Test

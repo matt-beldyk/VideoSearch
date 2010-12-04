@@ -1,16 +1,16 @@
 # Doctor Who S01E05.avi
 # Doctor Who - S01E05.avi
-#(\w[\w\s]*\w)[\s-]+S(\d+)E(\d+).(\w+)##series##season##ep##format
+(\w[\w\s]*\w)[\s\-]+[sS](\d+)[eE](\d+)\.(\w+)##series##season##ep##format
 
 # Doctor Who - 105.avi
 # Doctor Who 105.avi
-(\w[\w\s]*\w)[\s-]+(\d+)(\d\d).(\w+)##series##season##ep##format
+(\w[\w\s]*\w)[\s-]+(\d+)(\d\d)\.(\w+)##series##season##ep##format
 
 # Mythbusters.S03E18.repack.dsr.xvid-crntv.avi
-(\w[\w\s\.\_]*\w)[\s\-\._]+[Ss](\d+)[Ee](\d).*\.(\w{3})##series##season##ep##format
+#(\w[\w\s\.\_]*\w)[\s\-\._]+[Ss](\d+)[Ee](\d).*\.(\w+)##series##season##ep##format
 
 # Top Gear - 04x02 - 2004.05.16.avi
-(\w[\w\s\.\_]*\w)[\s\-\._]+(\d+)[Xx](\d+).*\.(\w{3})##series##season##ep##format
+#(\w[\w\s\.\_]*\w)[\s\-\._]+(\d+)[Xx](\d+).*\.(\w+)##series##season##ep##format
 
 # 23 David the Gnome - Kangaroo Adventure.avi
-(\d+)[\s\-\._]+(\w[\w\s\.\_]*\w).*\.(\w{3})##ep##series##format
+#(\d+)[\s\-\._]+(\w[\w\s\.\_]*\w).*\.(\w+)##ep##series##format

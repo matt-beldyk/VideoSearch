@@ -11,11 +11,12 @@ public class SpiderTest {
 	@Test
 	public void findSomeFiles (){
 		AbstractSpider spider = 
-			new FileSystemSpider("/home/beldyk/union/media/video/Television/Doctor Who/");
+			new FileSystemSpider("testData/television/Doctor Who/");
 		spider.findMedia();
 		Set<String> urls = spider.getUrls();
 		
 		for(String ur: urls){
+			//System.out.println(ur);
 			File fl = new File(ur);
 			assertTrue(fl.exists());
 			assertTrue(fl.isFile());

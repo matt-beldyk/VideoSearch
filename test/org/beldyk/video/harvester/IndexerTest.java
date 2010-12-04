@@ -16,7 +16,7 @@ public class IndexerTest {
 	
 	@Before
 	public void setup() throws Exception{
-		dex = new Indexer("videoPatterns.txt", "/home/beldyk/homework_data/VideoSearch/television/");
+		dex = new Indexer("videoPatterns.txt", "testData/television/");
 		dex.spiderFS();
 	}
 	
