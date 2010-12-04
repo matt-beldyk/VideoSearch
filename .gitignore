@@ -4,6 +4,8 @@
 bin/
 dist/
 external/
+build/
+testData/
 *.mat
 *.zip
 *.tar
