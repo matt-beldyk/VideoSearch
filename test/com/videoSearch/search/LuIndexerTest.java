@@ -59,7 +59,7 @@ public class LuIndexerTest {
 		dexer.mapFiles2Series();
 		Integer countDocs = luDex.index();
 		System.err.printf("Indexed %d documents.\n", countDocs);
-		assertTrue(countDocs > 3000);
+		assertTrue(countDocs > 2000);
 		
 	}
 }

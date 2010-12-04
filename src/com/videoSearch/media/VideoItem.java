@@ -75,13 +75,16 @@ public class VideoItem extends AbstractMediaItem {
 	public Document toDocument(){
 		Document doc = super.toDocument();
 
-		doc.add(new Field( "seriesName", this.seriesName, 
-				Field.Store.YES, Field.Index.ANALYZED));
+		if(this.seriesName != null){
+			doc.add(new Field( "seriesName", this.seriesName, 
+					Field.Store.YES, Field.Index.ANALYZED));
+		}
 
-		
-		doc.add(new Field( "seriesDesc", this.tvdbSeries.getOverview(), 
-				Field.Store.YES, Field.Index.ANALYZED));
-		
+		if(this.tvdbSeries != null && this.tvdbSeries.getOverview() != null){
+			doc.add(new Field( "seriesDesc", this.tvdbSeries.getOverview(), 
+					Field.Store.YES, Field.Index.ANALYZED));
+		}
+
 		//TODO add more fields from tvdb foo
 
 		return doc;
