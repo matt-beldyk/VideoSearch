@@ -5,10 +5,12 @@
 	<property file="build.properties"/>
 	<property name="build" value="build"/>
 	<property name="src" value="src"/>
+	<property name="test.src" value="test/"/>
+	<property name="test.classes" value="test.build/"/>
 	<property name="build.classes" value="build/classes" />
 	<property name="dist.dir" value="dist" />
 
-    <path id="vid.classpath">
+    <path id="lib.classpath">
         <fileset dir="lib">
             <include name="**/*.jar" />
         </fileset>
@@ -17,18 +19,48 @@
 	<target name="prepare" >
 		<mkdir dir="${build.classes}" />
 		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${test.classes}" />
 	</target>
 
 	<target name="clean" >
 		<delete dir="${build}" />
 		<delete dir="${dist.dir}" />
+		<delete dir="${test.classes}" />
 	</target>
 
 	<target name="compile" depends="prepare">
 
         <javac srcdir="${src}"  destdir="${build.classes}" deprecation="true" failonerror="true" debug="true">
-            <classpath refid="vid.classpath"/>
+            <classpath refid="lib.classpath"/>
         </javac>
+	</target>
+
+	<target name="compile-test" depends="prepare">
+        <javac srcdir="${test.src}"  destdir="${test.classes}" deprecation="true" failonerror="true" debug="true">
+            <classpath refid="lib.classpath"/>
+        </javac>
+	</target>
+
+
+	<target name="test" depends="compile, compile-test">
+		<junit fork="yes" haltonfailure="yes">
+				<formatter type="plain" usefile="false" />
+				<classpath refid="lib.classpath" />
+				<classpath>
+				    <pathelement location="${build.classes}"/>
+				    <pathelement location="${test.classes}"/>
+				    <pathelement path="${lib.classpath}"/>
+				 </classpath>
+						  
+
+				<batchtest fork="yes" todir="${reports.tests}">
+						<fileset dir="test/">
+								<include name="**/*.java"/>
+						</fileset>
+				</batchtest>
+
+		</junit>
+
 	</target>
 
 	<target name="jar" depends="compile">
