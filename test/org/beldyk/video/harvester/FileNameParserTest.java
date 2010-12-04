@@ -16,9 +16,11 @@ public class FileNameParserTest {
 		FileNameParser ps = new FileNameParser(fname);
 		String [] names = {
 				"Doctor Who S01E05.avi",
+				"Doctor.Who.S01E05.avi",
 				"Doctor Who - S01E05.avi",
 				"Doctor Who - 105.avi",
-				"Doctor Who 105.avi"
+				"Doctor Who 105.avi",
+				"Doctor Who 01x05.avi"
 		};
 
 		for(String n: names){
