@@ -29,19 +29,20 @@ public class LuIndexer {
 	}
 	
 	
-	public void init() throws CorruptIndexException, LockObtainFailedException, IOException{
-		iWriter = new IndexWriter( iDir, 
-						new StandardAnalyzer(Version.LUCENE_30),
-						true,
-						IndexWriter.MaxFieldLength.UNLIMITED
-				);
+	public Integer fullIndex() throws CorruptIndexException, IOException {
+		vIndexer.spiderFS();
+		vIndexer.parseFiles();
+		vIndexer.pullInSeries();
+		vIndexer.mapFiles2Series();
+		Integer countDocs = luceneIndex();
+		return countDocs;
 	}
 	
 	public void close() throws CorruptIndexException, IOException{
 		iWriter.close();
 	}
 	
-	public Integer index() throws CorruptIndexException, IOException {
+	public Integer luceneIndex() throws CorruptIndexException, IOException {
 		for(AbstractMediaItem item: vIndexer.getMediaItems()){
 			Document doc = item.toDocument();
 	

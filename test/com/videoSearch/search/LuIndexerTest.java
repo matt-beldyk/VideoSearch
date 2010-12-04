@@ -57,7 +57,7 @@ public class LuIndexerTest {
 		dexer.parseFiles();
 		dexer.pullInSeries();
 		dexer.mapFiles2Series();
-		Integer countDocs = luDex.index();
+		Integer countDocs = luDex.luceneIndex();
 		System.err.printf("Indexed %d documents.\n", countDocs);
 		assertTrue(countDocs > 2000);
 		
