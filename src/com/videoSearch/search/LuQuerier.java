@@ -38,6 +38,7 @@ public class LuQuerier {
 		Query query = qParser.parse(queryString);
 
 		ScoreDoc[] hits = iSearcher.search(query, howMany).scoreDocs;
+		System.err.printf("score docs count:%d\n", hits.length);
 		Collection<Document> docs = new ArrayList<Document>();
 		for (ScoreDoc hit: hits) {
 			Document hitDoc = iSearcher.doc(hit.doc);

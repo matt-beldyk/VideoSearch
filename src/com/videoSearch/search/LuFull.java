@@ -23,6 +23,11 @@ public class LuFull {
 
 
 	public LuFull() throws CorruptIndexException, LockObtainFailedException, IOException{
+
+
+	}
+
+	public void init() throws CorruptIndexException, IOException{
 		indexDirectory = new RAMDirectory();
 
 		IndexWriter iWriter = new IndexWriter( indexDirectory, 
@@ -31,20 +36,20 @@ public class LuFull {
 				IndexWriter.MaxFieldLength.UNLIMITED
 		);
 
+		//Indexer dexer  = new Indexer("videoPatterns.txt", "testData/smallTest/");
 		Indexer dexer  = new Indexer("videoPatterns.txt", "testData/television/");
+
 		luIndexer = new LuIndexer(iWriter, indexDirectory, dexer);
-
-		luQuerier = new LuQuerier(indexDirectory);
-
-	}
-
-	public void init() throws CorruptIndexException, IOException{
+		//luIndexer.fullIndex();
 		luIndexer.fullIndex();
+
+
+		luQuerier = new LuQuerier(luIndexer.getIDir());
 		
 	}
 
 	public Collection<String> search(String query) throws IOException, ParseException{
-		Collection<Document> docs = luQuerier.search(query, 50);
+		Collection<Document> docs = this.luQuerier.search(query, 50);
 		Collection<String> urls = new ArrayList<String>();
 		for(Document doc: docs){
 			urls.add(doc.getField("fileUrl").stringValue());

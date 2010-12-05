@@ -34,24 +34,23 @@ public class LuIndexer {
 		vIndexer.parseFiles();
 		vIndexer.pullInSeries();
 		vIndexer.mapFiles2Series();
-		Integer countDocs = luceneIndex();
-		iWriter.close();
+		Integer countDocs = this.luceneIndex();
 		return countDocs;
 	}
 	
-	public void close() throws CorruptIndexException, IOException{
-		iWriter.close();
-	}
+	
 	
 	public Integer luceneIndex() throws CorruptIndexException, IOException {
 		for(AbstractMediaItem item: vIndexer.getMediaItems()){
 			Document doc = item.toDocument();
-			System.out.println("Indexing "+item.getFileUrl());
 			
 			if(doc != null){
+				System.out.println("Indexing "+item.getFileUrl());
+				
 				iWriter.addDocument(doc);
 			}
 		}
+		iWriter.close();
 		
 		return iWriter.numDocs();
 	}
