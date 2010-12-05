@@ -31,13 +31,13 @@ public class LuFull {
 		indexDirectory = new RAMDirectory();
 
 		IndexWriter iWriter = new IndexWriter( indexDirectory, 
-				new StandardAnalyzer(Version.LUCENE_30),
+				new VidAnalyzer(),
 				true,
 				IndexWriter.MaxFieldLength.UNLIMITED
 		);
 
-		//Indexer dexer  = new Indexer("videoPatterns.txt", "testData/smallTest/");
-		Indexer dexer  = new Indexer("videoPatterns.txt", "testData/television/");
+		Indexer dexer  = new Indexer("videoPatterns.txt", "testData/smallTest/");
+		//Indexer dexer  = new Indexer("videoPatterns.txt", "testData/television/");
 
 		luIndexer = new LuIndexer(iWriter, indexDirectory, dexer);
 		//luIndexer.fullIndex();

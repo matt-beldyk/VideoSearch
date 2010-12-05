@@ -29,7 +29,7 @@ public class LuQuerier {
 		this.qParser = new MultiFieldQueryParser(
 				Version.LUCENE_30, 
 				fields, 
-				new StandardAnalyzer(Version.LUCENE_30)
+				new VidAnalyzer()
 				);
 	}
 	
