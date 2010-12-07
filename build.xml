@@ -80,6 +80,9 @@
 
   <property file="build.properties"/>
   <property file="${user.home}/build.properties"/>
+  <property name="test.classes" value="test.build/"/>
+    <property name="test.src" value="test/"/>
+
 
 
 <!-- ==================== File and Directory Names ======================== -->
@@ -444,6 +447,8 @@
 
     <!-- Create build directories as needed -->
     <mkdir  dir="${build.home}"/>
+    <mkdir dir="${test.classes}" />
+
     <mkdir  dir="${build.home}/WEB-INF"/>
     <mkdir  dir="${build.home}/WEB-INF/classes"/>
 
@@ -513,6 +518,38 @@
              path="${app.path}"/>
 
   </target>
+
+    <target name="compile-test" depends="prepare,compile">
+        <javac srcdir="${test.src}"  destdir="${test.classes}" deprecation="true" failonerror="true" debug="true">
+            <classpath refid="compile.classpath"/>
+            <classpath>
+                    <pathelement location="${build.home}/WEB-INF/classes"/>
+                    <pathelement path="${compile.classpath}"/>
+            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="test" depends="compile, compile-test">
+        <junit fork="yes" haltonfailure="yes">
+                <formatter type="plain" usefile="false" />
+                <classpath refid="compile.classpath" />
+                <classpath>
+                    <pathelement location="${build.home}"/>
+                    <pathelement location="${test.classes}"/>
+                    <pathelement path="${compile.classpath}"/>
+                 </classpath>
+
+
+                <batchtest fork="yes" todir="${reports.tests}">
+                        <fileset dir="test/">
+                                <include name="**/*.java"/>
+                        </fileset>
+                </batchtest>
+
+        </junit>
+
+    </target>
 
 
 </project>
