@@ -43,10 +43,16 @@ final public class SearchPage extends HttpServlet {
         writer.println("</td>");
         writer.println("<td>");
         writer.println("<h1>Video Search Tool Thingie</h1>");
+        
         writer.println("What are you in the mood for today?");
         writer.println("</td>");
         writer.println("</tr>");
-        writer.println("</table>");
+        
+        writer.println("<form method=\"post\" action =\""+ request.getContextPath() +
+        			   "/search\" >");
+        writer.println("<input type=\"text\" name=\"moodQuery\" size=\"30\">");
+        writer.println("<input type=\"submit\" value=\"Go!\">");
+        writer.println("</form></table>");
 
         writer.println("</body>");
         writer.println("</html>");
