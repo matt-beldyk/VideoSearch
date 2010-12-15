@@ -22,8 +22,8 @@ public class LuFull {
 	private Directory indexDirectory;
 
 
-	public LuFull() throws CorruptIndexException, LockObtainFailedException, IOException{
-
+	public LuFull() throws CorruptIndexException, IOException {
+		this.init();
 
 	}
 
@@ -60,7 +60,7 @@ public class LuFull {
 
 	public static void main(String[] args) throws CorruptIndexException, LockObtainFailedException, IOException, ParseException{
 		LuFull luFull = new LuFull();
-		luFull.init();
+		//luFull.init();
 		java.io.BufferedReader stdin = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
 
 		while(true){
