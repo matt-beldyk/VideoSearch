@@ -9,22 +9,26 @@
 
 \begin{document}
 
-\title{Mountain Skyline Recognition}
+\title{VideoSearch: a Lucene Powered Desktop Video Search System}
 
 
 
-\numberofauthors{1} 
+\numberofauthors{2} 
 %
 \author{
-% 1st. author
 \alignauthor
 Matthew Beldyk\\
        \affaddr{University of Colorado}\\
        \affaddr{CSCI 5722}\\
        \affaddr{Boulder, Colorado}\\
        \email{beldyk@colorado.edu}
+\alignauthor
+Michael Brunel\\
+       \affaddr{University of Colorado}\\
+       \affaddr{CSCI 5722}\\
+       \affaddr{Boulder, Colorado}\\
+       \email{leachim.bulwark@gmail.com}
 }
-
 \maketitle
 \begin{abstract}
 
@@ -58,24 +62,28 @@ Once we have the information associated with each series, we need to associated 
 After the full index is created, which only takes a couple minutes for the 3000+ files in our test collection, VideoSearch is available for searching.  Currently, VideoSearch only has a command line interface working; a web based frontend was in the works, but was delayed by the increased workload at the end of the semester.  There are two routes to go with VideoSearch right now: complete the web GUI or tie VideoSearch into another multimedia collection system.
 
 
-\section{results}
+\section{Results}
     By utilizing as much meta-data as possible to classify each video we are striving to provide a complete account of what a video truly represents. When you make that search for espionage, you will likely get the staples of James Bond, The Bourne Identity, and many others, but VideoSearch will also find the WWII documentary on infiltrating the 3rd Reich that you forgot that you downloaded.
+
     By incorporating user reviews and descriptions into the indexing algorithm, we can provide a better user driver experience into the mix. We have all seen cases where the box cover description of the video is lack luster at best, completely misleading at worst. By utilizing user based data, we can hopefully counteract this problem and provide a better result that more accurately represents the true nature of the video.
 
    
 
 
-\subsection{analysis}
+\subsection{Analysis}
 
 It is difficult to evaluate the effectiveness of VideoSearch. The smaller parts of the system can be evaluated to a certain degree; for example, the filename tokenization code can be evaluated for a set of test cases, but it would be exorbitantly expensive to test for the entirety of our test set.  There is also no “gold standard” for what videos should be returned for various topics.  There were, in fact, many surprises found while testing; a search for “travel” would return various travel shows, but would also return “Doctor Who.”  “Doctor Who” while not what one would normally consider a travel show, is absolutely about a traveler, so it is unknown how this result should be evaluated.
 
 In the end, the true evaluation of this system would need to be several user tests, where they’ve indexed their collection, and would use the system over a period of time noting whether they were finding what they expected, had a pleasant surprise of something they had completely forgotten, or not finding what they wanted.  Once can imagine the case where a user remembered they had some show about “crystal skulls” or some other topic of interest, they would enter that as a search term, and they might or might not find the documentaries or movies they desired.
 
 
-\section{Conclusions and Lessons Learned}
+\section{Conclusions}
     As with all search applications we have been faced with the problem of ambiguity in search terms. What do you return for a search about “travel”, clearly you include the travel channels special on backpacking in the Andes, but what about “A culinary tour of Asia” or “Doctor Who” the time travelling doctor. Coupled with this is the lesser issue of how you handle series that have more than one, but not necessarily all, of their episodes related to the query?
+
     Possibly the largest hurtle to getting a system of this kind up and running is parsing the large volumes of data. There is no universal standard, there are a few guidelines that are followed but this only accounted for about half of what we indexed. This has created a monumental challenge in determining what each file actually is. We were able to get 90\% of the files to parse with a small set of around 10 rules, however the remaining 10\% were all going to have to be custom tailored. This is all on a collection of only a few thousand files, largely from the same resource.
+
     Having finally parsed the files, gathering the information about each file also proved difficult. Wanting to only index information for content that we have already, we had to search the information sources for matches to our parsed data. For some things like “Doctor Who” this was very easy, seeing as each episode has at least a full page article detailing everything about the episode. However, for many shows/movies there was limited to no information about them at the site we utilized. Furthermore, there was the issue of abbreviations, tvdb was unable to determine the proper expansion for abbreviations. These issues can largely be curtailed by including more information sources, potentially even using one to help search another. However, this expansion of sources ran afoul when we discovered that many sites dislike automated tools interacting with them.
+
     In the end, we have come to the conclusion that our design would be best suited as part of a larger project (xmbc, windows media center,etc...). Not only do we gain access to the work that has already been done by these projects in the area of parsing, and potentially data collection. But we also remove the need for the user to install another application to handle their growing media collection. When attempting to handle the ever growing size of a media collection  the last thing the user needs is to install yet another program. 
 \bibliographystyle{abbrv}
 \bibliography{ir_paper}
